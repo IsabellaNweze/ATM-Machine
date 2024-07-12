@@ -1,55 +1,45 @@
-import java.util.Scanner;//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
+    public static void main(String[] args) {
+        AccountInfo accountInfo = new AccountInfo("Bella", "Savings", "2004");
+        ATMService atmService = new ATMServicImpl();
 
-    public static void main (String[] args) {
+        if(atmService.verify(accountInfo) ){
 
-        System.out.println("Welcome to ActivEdge Atm");
-        Scanner scanner = new Scanner (System.in);
-        int counter =0;
-        while(counter < 3) {
-            System.out.println("Enter your ATM pin  below \n xxxx");
-            String pin = scanner.nextLine();
-            boolean correct = verify(pin);
-            if(correct){
-                break;
+            int count = 1;
+            while (count != 0) {
+                count = atmService.displayMenu(accountInfo);
+                switch(count){
+                    case 0:
+                        System.out.println("Collect your card from the ATM");
+
+                        break;
+
+                    case 1:
+                        atmService.CheckBalance(accountInfo);
+                        break;
+
+                    case 2:
+                        atmService.Withdraw(accountInfo);
+                        break;
+
+                    case 3:
+                        atmService.ChangePin(accountInfo);
+                        break;
+
+                    case 4:
+                        atmService.Transfer(accountInfo);
+                        break;
+                    default:
+                        System.out.println("Invalid input");
+                        break;
+                }
+
             }
-            else{
-                System.out.println("Try again");
-                counter++;
-            }
-            if(counter>=3){
-                System.out.println("Invalid Customer stop trying.");
-                System.exit(1);
-            }
-        }
 
-        int MenuOption = displayMenu();
-       // AccountInfo account1 = new AccountInfo("Isabella", " Savings");
-        //account1.setBalance(20000.00);
-
-    }
-
-    public static boolean verify (String Pin){
-        boolean verified;
-
-        if (Pin.equals("2004")){
-             verified = true;
         }
         else{
-            verified = false;
+            System.out.println("Incorrect pin entered too many times please remove your card");
         }
-
-        return verified;
-    }
-
-    public static int displayMenu(){
-        Scanner scanner = new Scanner (System.in);
-        System.out.println("Hello Customer");
-        System.out.print("1.Check Balance  \t  2.Withdraw \n3.Change Pin  \t    4.Transfer\n");
-        System.out.println("Select the number on the menu you wish to perform");
-        int option = scanner.nextInt();
-        return option;
 
     }
 }

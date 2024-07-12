@@ -1,7 +1,7 @@
 public interface ATMService {
     void CheckBalance(AccountInfo accountInfo);
     double Withdraw(AccountInfo accountInfo);
-    int displayMenu();
+    int displayMenu(AccountInfo accountInfo);
 
     //String ChangePin();
     boolean verify (AccountInfo accountInfo);

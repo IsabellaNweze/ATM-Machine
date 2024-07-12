@@ -4,7 +4,7 @@ public class ATMServicImpl implements ATMService {
     Scanner scanner = new Scanner (System.in);
     @Override
     public void CheckBalance(AccountInfo accountInfo) {
-        System.out.println(accountInfo.getName() + " Your" + accountInfo.getAccountType() +  "account balance is :"+ accountInfo.getBalance());
+        System.out.println(accountInfo.getName() + " Your" + accountInfo.getAccountType() +  " account balance is :"+ accountInfo.getBalance());
     }
 
     @Override
@@ -27,8 +27,9 @@ public class ATMServicImpl implements ATMService {
 
 
     @Override
-    public int displayMenu() {
-        System.out.println("Hello Customer");
+    public int displayMenu(AccountInfo accountInfo) {
+        System.out.println("\n Hello "+ accountInfo.getName());
+
         System.out.print("1.Check Balance  \t  2.Withdraw \n3.Change Pin  \t    4.Transfer\n");
         System.out.println("Select 0 to exit");
         System.out.println("Select the number on the menu you wish to perform");
@@ -51,13 +52,16 @@ public class ATMServicImpl implements ATMService {
 
     @Override
     public double Transfer(AccountInfo accountInfo) {
+        Scanner scanner2 = new Scanner(System.in);
         System.out.println("Enter the Bank you wish to transfer to");
-        String Bank = scanner.nextLine();
-        System.out.println("Enter The Account Number ");
-        String acct_no = scanner.nextLine();
+        String Bank = scanner2.nextLine();
+        String acct_no= "";
+        if(Bank.length()>1) {
+            System.out.println("Enter The Account Number ");
+             acct_no = scanner2.nextLine();
+        }
         System.out.println("How much do you want to transfer");
-
-        Double amount = scanner.nextDouble();
+        Double amount = scanner2.nextDouble();
         if (amount> accountInfo.getBalance()){
             System.out.println("Unable to transfer due to insufficient balance");
         }
