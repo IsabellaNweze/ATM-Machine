@@ -1,9 +1,9 @@
 public class Runb {
     public static void main(String[] args) {
-        AccountInfo accountInfo = new AccountInfo("Bella", "Savings");
+        AccountInfo accountInfo = new AccountInfo("Bella", "Savings", "2004");
         ATMService atmService = new ATMServicImpl();
 
-        if(atmService.verify("2004")) {
+        if(atmService.verify(accountInfo) ){
 
             int count = 1;
             while (count != 0) {
@@ -19,11 +19,15 @@ public class Runb {
                         break;
 
                     case 2:
-                        atmService.Withdraw(accountInfo,"2004");
+                        atmService.Withdraw(accountInfo);
+                        break;
+
+                    case 3:
+                        atmService.ChangePin(accountInfo);
                         break;
 
                     case 4:
-                        atmService.Transfer(accountInfo,"2004");
+                        atmService.Transfer(accountInfo);
                         break;
                     default:
                         System.out.println("Invalid input");

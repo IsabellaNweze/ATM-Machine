@@ -4,11 +4,11 @@ public class ATMServicImpl implements ATMService {
     Scanner scanner = new Scanner (System.in);
     @Override
     public void CheckBalance(AccountInfo accountInfo) {
-        System.out.println(accountInfo.getName() + " Your account balance is :"+ accountInfo.getBalance());
+        System.out.println(accountInfo.getName() + " Your" + accountInfo.getAccountType() +  "account balance is :"+ accountInfo.getBalance());
     }
 
     @Override
-    public double Withdraw(AccountInfo accountInfo, String pin) {
+    public double Withdraw(AccountInfo accountInfo) {
 
         System.out.println("Enter the amount you want to withdraw?");
         double amount = scanner.nextDouble();
@@ -35,20 +35,22 @@ public class ATMServicImpl implements ATMService {
         return scanner.nextInt();
     }
     @Override
-    public boolean verify(String pin){
+    public boolean verify(AccountInfo accountInfo){
         int count=0;
         while(count<3){
             System.out.println("Enter your ATM pin  below \n xxxx");
             String pinReq = scanner.nextLine();
-            if (pin.equals(pinReq))
+            if (accountInfo.getPin().equals(pinReq))
                 return true;
             count++;
+            System.out.println("Incorrect pin Try Again");
+
         }
         return false;
     }
 
     @Override
-    public double Transfer(AccountInfo accountInfo, String pin) {
+    public double Transfer(AccountInfo accountInfo) {
         System.out.println("Enter the Bank you wish to transfer to");
         String Bank = scanner.nextLine();
         System.out.println("Enter The Account Number ");
@@ -65,5 +67,22 @@ public class ATMServicImpl implements ATMService {
             accountInfo.setBalance(new_balance);
         }
         return amount;
+    }
+
+    @Override
+    public void ChangePin(AccountInfo accountInfo) {
+        Scanner scanner1 = new Scanner(System.in);
+        System.out.println("Enter previous pin");
+        String old_pin = scanner1.nextLine();
+        System.out.println(old_pin);
+        if (old_pin.equals(accountInfo.getPin())){
+            System.out.println("Enter the new pin ");
+            String new_pin= scanner1.nextLine();
+            accountInfo.setPin(new_pin);
+        }
+        else{
+            System.out.println("The pin you entered was incorrect");
+        }
+
     }
 }

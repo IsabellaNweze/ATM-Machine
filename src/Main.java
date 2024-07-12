@@ -25,8 +25,8 @@ public class Main {
         }
 
         int MenuOption = displayMenu();
-        AccountInfo account1 = new AccountInfo("Isabella", " Savings");
-        account1.setBalance(20000.00);
+       // AccountInfo account1 = new AccountInfo("Isabella", " Savings");
+        //account1.setBalance(20000.00);
 
     }
 

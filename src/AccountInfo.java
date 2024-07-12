@@ -5,17 +5,19 @@ public class AccountInfo {
     private String AccountType;
     private Double balance;
 
-    public AccountInfo(String name, String AccountType, double balance){
+    private String pin;
+
+    public AccountInfo(String name, String AccountType, double balance, String pin){
         this.name = name;
         this.AccountType= AccountType;
         this.balance = balance;
-
+        this.pin = pin;
     }
-    public AccountInfo(String name, String AccountType){
+    public AccountInfo(String name, String AccountType,String pin){
         this.name = name;
         this.AccountType= AccountType;
         this.balance = 20000.00;
-
+        this.pin = pin;
     }
 
 
@@ -42,5 +44,13 @@ public class AccountInfo {
 
     public void setAccountType(String accountType) {
         AccountType = accountType;
+    }
+
+    public String getPin() {
+        return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 }
