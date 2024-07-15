@@ -1,0 +1,4 @@
+Performed withdrawal.
+Checked balance.
+Performed transfer.
+User session ended.
