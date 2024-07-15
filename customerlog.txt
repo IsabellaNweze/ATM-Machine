@@ -1,4 +1,7 @@
-Performed withdrawal.
-Checked balance.
-Performed transfer.
-User session ended.
+Performed transfer.	17:02:03 
+Checked balance.	17:02:06
+Performed transfer.	17:02:21 
+Performed withdrawal.	17:02:26
+Checked balance.	17:02:31
+User session ended.	  17:02:35
+ Total duration of session : 46seconds

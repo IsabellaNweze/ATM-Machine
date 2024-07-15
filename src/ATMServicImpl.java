@@ -1,5 +1,7 @@
 import java.util.Scanner;
-
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
+import java.time.format.DateTimeFormatter;
 public class ATMServicImpl implements ATMService {
     Scanner scanner = new Scanner (System.in);
     @Override
@@ -38,6 +40,7 @@ public class ATMServicImpl implements ATMService {
     @Override
     public boolean verify(AccountInfo accountInfo){
         int count=0;
+
         while(count<3){
             System.out.println("Enter your ATM pin  below \n xxxx");
             String pinReq = scanner.nextLine();
@@ -88,5 +91,14 @@ public class ATMServicImpl implements ATMService {
             System.out.println("The pin you entered was incorrect");
         }
 
+    }
+
+    @Override
+    public String CurrentTime() {
+        LocalTime now = LocalTime.now();
+        LocalTime currentTime = now.truncatedTo(ChronoUnit.SECONDS);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String format= currentTime.format(formatter);
+        return format;
     }
 }

@@ -10,6 +10,7 @@ public interface ATMService {
 
     void ChangePin(AccountInfo accountInfo);
 
+    String CurrentTime();
 
 
 }
